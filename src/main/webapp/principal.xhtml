@@ -3,9 +3,44 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<title>pantalla principal</title>
+	<title>pantalla principal</title>
+	<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+
 </h:head>
 <h:body>
-  holaaaaaaaaaaaaaaaaaa
+  
+  <h:dataTable id="tblEmpleado" var="empleado"
+		value="#{principalController.empleados}" headerClass="headerTable" rowClasses="rowTable rowTableLine">
+		<h:column>
+			<f:facet name="header">Nombre</f:facet>
+			<h:outputText value="#{empleado.nombre}"></h:outputText>
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Primer apellido</f:facet>
+			<h:outputText value="#{empleado.primerApellido}"></h:outputText>
+
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">segundo apeliido</f:facet>
+			<h:outputText value="#{empleado.segundoApellido}"></h:outputText>
+
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">puesto</f:facet>
+			<h:outputText value="#{empleado.puesto}"></h:outputText>
+
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">estatus</f:facet>
+			<h:outputText value="Habilitado" rendered="#{empleado.estatus}"></h:outputText>
+			<h:outputText value="inhabilitado" rendered="#{!empleado.estatus}"></h:outputText>
+
+
+		</h:column>
+	</h:dataTable>
 </h:body>
 </html>
